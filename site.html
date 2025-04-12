@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevSync | Portfólio</title>
+  <meta name="description" content="DevSync é especializada em criar sites modernos, acessíveis e rápidos para pequenos negócios, profissionais liberais e startups. Destaque-se online com design personalizado, entrega ágil e suporte contínuo." />
+  <meta name="keywords" content="desenvolvimento web, sites profissionais, landing pages, portfólios, DevSync, acessibilidade, design personalizado, startups, freelancers, pequenos negócios" />
+  <meta name="author" content="DevSync" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #0d0d0d;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00aaff;
+      animation: slideDown 1s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header h1 {
+      color: #00aaff;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+    }
+
+    #themeToggle {
+      margin-left: 20px;
+      background: none;
+      border: 2px solid #00aaff;
+      color: #00aaff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 80vh;
+      padding: 0 20px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: #00aaff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    .section {
+      padding: 60px 40px;
+    }
+
+    .section h3 {
+      color: #00aaff;
+      margin-bottom: 20px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #00aaff33;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00aaff55;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input, textarea {
+      margin-bottom: 15px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
+    button {
+      background-color: #00aaff;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0088cc;
+    }
+
+    .testimonials {
+      background-color: #0a0a0a;
+      padding: 60px 40px;
+    }
+
+    .testimonial {
+      background-color: #111;
+      border-left: 4px solid #00aaff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .testimonial p {
+      font-style: italic;
+    }
+
+    .testimonial h4 {
+      margin-top: 10px;
+      color: #00aaff;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social a {
+      color: #00aaff;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social a:hover {
+      transform: scale(1.2);
+    }
+
+    footer {
+      background-color: #0d0d0d;
+      text-align: center;
+      padding: 20px;
+      color: #888;
+    }
+
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      max-width: 80%;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+
+    .carousel-controls button {
+      background-color: rgba(0, 170, 255, 0.6);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-controls button:hover {
+      background-color: rgba(0, 170, 255, 0.9);
+      transform: scale(1.1);
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: #00aaff;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 16px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    /* Modo Claro */
+    body.light-mode {
+      background-color: #fff;
+      color: #000;
+    }
+
+    body.light-mode header {
+      background-color: #f0f0f0;
+      border-bottom-color: #0077cc;
+    }
+
+    body.light-mode nav a {
+      color: #000;
+    }
+
+    body.light-mode nav a:hover {
+      color: #0077cc;
+    }
+
+    body.light-mode .hero h2,
+    body.light-mode .section h3,
+    body.light-mode .testimonial h4 {
+      color: #0077cc;
+    }
+
+    body.light-mode .card,
+    body.light-mode .testimonial {
+      background-color: #f9f9f9;
+      color: #000;
+      border-color: #0077cc33;
+    }
+
+    body.light-mode input,
+    body.light-mode textarea {
+      background-color: #eee;
+      color: #000;
+    }
+
+    body.light-mode input::placeholder,
+    body.light-mode textarea::placeholder {
+      color: #666;
+    }
+
+    body.light-mode footer {
+      background-color: #f0f0f0;
+      color: #555;
+    }
+
+    body.light-mode .carousel-controls button {
+      background-color: rgba(0, 119, 204, 0.6);
+    }
+
+    body.light-mode .carousel-controls button:hover {
+      background-color: rgba(0, 119, 204, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DevSync</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button id="themeToggle">Modo Claro</button>
+  </header>
+
+  <section class="hero">
+    <h2>Conectando ideias ao futuro digital</h2>
+    <p>Na DevSync, desenvolvemos sites modernos, acessíveis e rápidos para profissionais e empresas que desejam se destacar no mundo online.</p>
+  </section>
+
+  <div class="carousel" id="carousel">
+    <img src="Imagem do WhatsApp de 2025-04-12 à(s) 12.51.38_a0579b02.jpg" alt="Slide 1">
+    <img src="Imagem do WhatsApp de 2025-04-12 à(s) 12.51.38_f03ca613.jpg" alt="Slide 2">
+    <div class="carousel-controls">
+      <button onclick="prevSlide()">❮</button>
+      <button onclick="nextSlide()">❯</button>
+    </div>
+  </div>
+
+  <section class="section" id="sobre">
+    <h3>Sobre a DevSync</h3>
+    <p>Somos uma empresa especializada em desenvolvimento web, focada em entregar soluções digitais com design personalizado, suporte contínuo e agilidade na entrega.</p>
+  </section>
+
+  <section class="section" id="projetos">
+    <h3>Projetos Recentes</h3>
+    <div class="projects">
+      <div class="card">
+        <h4>Site Profissional</h4>
+        <p>Criação de site institucional para consultores e prestadores de serviço.</p>
+      </div>
+      <div class="card">
+        <h4>Landing Page</h4>
+        <p>Landing page otimizada para conversão de leads de startups.</p>
+      </div>
+      <div class="card">
+        <h4>Portfólio Criativo</h4>
+        <p>Site com animações suaves e layout responsivo para profissionais liberais.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="depoimentos">
+    <h3>Depoimentos</h3>
+    <div class="testimonial">
+      <p>“A DevSync superou nossas expectativas. O site ficou incrível e o suporte é excelente!”</p>
+      <h4>— João Pereira, Consultor de Marketing</h4>
+    </div>
+    <div class="testimonial">
+      <p>“Trabalho rápido, limpo e moderno. Recomendo de olhos fechados!”</p>
+      <h4>— Carla M., Psicóloga</h4>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <h3>Contato</h3>
+    <form action="https://formsubmit.co/contato@devsync.com" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+    <div class="social">
+      <a href="https://instagram.com/devsync" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" width="24" height="24" style="filter: invert(56%) sepia(75%) saturate(403%) hue-rotate(160deg) brightness(102%) contrast(101%)" />
+      </a>
+      <a href="https://linkedin.com/company/devsync" target="_blank" title="LinkedIn">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" style="filter: invert(56%) sepia(75%) saturate(403%) hue-rotate(160deg) brightness(102%) contrast(101%)" />
+      </a>
+      <a href="https://github.com/devsync" target="_blank" title="GitHub">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" width="24" height="24" style="filter: invert(56%) sepia(75%) saturate(403%) hue-rotate(160deg) brightness(102%) contrast(101%)" />
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 DevSync. Todos os direitos reservados.</p>
+  </footer>
+
+  <button id="backToTop" title="Voltar ao topo">↑</button>
+
+  <script>
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const slides = carousel.querySelectorAll('img');
+
+    function showSlide(index) {
+      const offset = -index * 100;
+      slides.forEach(img => {
+        img.style.transform = `translateX(${offset}%)`;
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 5000);
+
+    const backToTop = document.getElementById('backToTop');
+    window.onscroll = () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    };
+    backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    const setTheme = (mode) => {
+      if (mode === 'light') {
+        body.classList.add('light-mode');
+        toggleBtn.textContent = 'Modo Escuro';
+      } else {
+        body.classList.remove('light-mode');
+        toggleBtn.textContent = 'Modo Claro';
+      }
+      localStorage.setItem('theme', mode);
+    };
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = body.classList.contains('light-mode');
+      setTheme(isLight ? 'dark' : 'light');
+    });
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      setTheme(savedTheme);
+    };
+  </script>
+</body>
+</html>
